@@ -1,8 +1,8 @@
 #pragma once
 #include "Networking/UDPGameNetworking.h"
-class SyncStateClient{
+class SyncSlateClient{
 private:
 protected:
 public:
     void start();
-}
+};

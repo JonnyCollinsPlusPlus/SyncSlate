@@ -38,7 +38,7 @@ bool NetworkUtilities::IsImportantType(NetworkMessageTypes type)
 		return false;
 	}
 }
-void NetworkUtilities::SendMessageDirect(NetworkMessageTypes messageType, std::string message, SDLNet_DatagramSocket* socket, SDLNet_Address* address, int port)
+void NetworkUtilities::SendMessageDirect(NetworkMessageTypes messageType, std::string message, NET_DatagramSocket* socket, NET_Address* address, int port)
 {
 	//the header of the message as 4 bits in a string
 	std::string messageHeader = PackHeader(messageType);
@@ -47,7 +47,7 @@ void NetworkUtilities::SendMessageDirect(NetworkMessageTypes messageType, std::s
 	//sends the compressed message to the specified port and address
 	SDLNet_SendDatagram(socket, address, port, compressedMessage->data(), compressedMessage->size());
 }
-bool NetworkUtilities::GetNextIncoming(SDLNet_DatagramSocket* socket, NetworkMessage*& message, MessageSender* sender)
+bool NetworkUtilities::GetNextIncoming(NET_DatagramSocket* socket, NetworkMessage*& message, MessageSender* sender)
 {
 	SDLNet_Datagram* incoming = nullptr;
 	int bytesReceived = SDLNet_ReceiveDatagram(socket, &incoming);
@@ -78,7 +78,7 @@ bool NetworkUtilities::GetNextIncoming(SDLNet_DatagramSocket* socket, NetworkMes
 	return message != nullptr;
 }
 
-void NetworkUtilities::SendMessageTo(NetworkMessageTypes messageType, std::string message, SDLNet_DatagramSocket* socket, SDLNet_Address* address, int port, MessageSender* sender)
+void NetworkUtilities::SendMessageTo(NetworkMessageTypes messageType, std::string message, NET_DatagramSocket* socket, NET_Address* address, int port, MessageSender* sender)
 {
 	if (NetworkUtilities::IsImportantType(messageType)) {
 		sender->SendImportantMessageTo(message, messageType, address, port);
