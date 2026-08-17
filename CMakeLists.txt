@@ -7,11 +7,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(SDL3 CONFIG REQUIRED)
 find_package(SDL3_net CONFIG REQUIRED)
 
-add_executable(main
-    SyncSlateClient.cpp
+add_executable(SyncSlateClient
+    SyncSlateClient/SyncSlateClient.cpp
 )
 
-target_link_libraries(main PRIVATE
+target_link_libraries(SyncSlateClient PRIVATE
+    SDL3::SDL3
+    $<IF:$<TARGET_EXISTS:SDL3_net::SDL3_net>,SDL3_net::SDL3_net,SDL3_net::SDL3_net-static>
+)
+
+
+add_executable(SyncSlateServer
+    SyncSlateServer/SyncSlateServer.cpp
+)
+
+target_link_libraries(SyncSlateServer PRIVATE
     SDL3::SDL3
     $<IF:$<TARGET_EXISTS:SDL3_net::SDL3_net>,SDL3_net::SDL3_net,SDL3_net::SDL3_net-static>
 )

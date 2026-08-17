@@ -1,5 +1,5 @@
 #pragma once
-#include "Networking/UDPGameNetworking.h"
+#include "../Networking/UDPGameNetworking.h"
 class SyncSlateClient{
 private:
 protected:
