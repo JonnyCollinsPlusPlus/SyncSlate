@@ -3,7 +3,7 @@
 NetworkMessage::NetworkMessage()
 {
 }
-NetworkMessage::NetworkMessage(SDLNet_Datagram* datagramToProcess)
+NetworkMessage::NetworkMessage(NET_Datagram* datagramToProcess)
 {
 	Uint8* buffer = (Uint8*)datagramToProcess->buf;
 	int bufferLength = datagramToProcess->buflen;

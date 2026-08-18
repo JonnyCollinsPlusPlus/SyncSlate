@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "SDL3_net/SDL_net.h"
+#include <SDL3_net/SDL_net.h>
 #include "Endpoints/EndpointInfo.h"
 enum NetworkMessageTypes;
 class NetworkMessage {
