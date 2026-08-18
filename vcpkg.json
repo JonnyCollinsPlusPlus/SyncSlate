@@ -4,6 +4,10 @@
 	"builtin-baseline": "94a541197763a4f449a1b91478df48c0584a6256",
     "dependencies": [
         "sdl3",
-        "sdl3-net"
+        "sdl3-net",
+        {
+            "name": "imgui",
+            "features": ["sdl3-binding", "sdl3-renderer-binding"]
+        }
     ]
 }

@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(SDL3 CONFIG REQUIRED)
 find_package(SDL3_net CONFIG REQUIRED)
+find_package(imgui CONFIG REQUIRED)
 
 add_executable(SyncSlateClient
     SyncSlateClient/SyncSlateClient.cpp
@@ -14,6 +15,7 @@ add_executable(SyncSlateClient
 target_link_libraries(SyncSlateClient PRIVATE
     SDL3::SDL3
     $<IF:$<TARGET_EXISTS:SDL3_net::SDL3_net>,SDL3_net::SDL3_net,SDL3_net::SDL3_net-static>
+    imgui::imgui
 )
 
 
