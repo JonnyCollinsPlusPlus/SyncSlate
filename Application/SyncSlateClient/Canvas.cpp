@@ -1,7 +1,10 @@
 #include "Canvas.h"
 #include <imgui.h>
+Canvas::Canvas() : board(std::make_unique<Whiteboard>()) {
+    
+}
 void Canvas::draw(){
-    ImGui::Begin("My First Tool", &window_active, ImGuiWindowFlags_MenuBar);
+    ImGui::Begin("Canvas", &window_active, ImGuiWindowFlags_MenuBar);
 
     if (ImGui::BeginMenuBar()) {
         if (ImGui::BeginMenu("File")) {

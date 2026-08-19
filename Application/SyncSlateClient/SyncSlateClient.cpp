@@ -35,7 +35,7 @@ bool SyncSlateClient::init() {
     ImGui_ImplSDL3_InitForSDLRenderer(window, renderer);
     ImGui_ImplSDLRenderer3_Init(renderer);
     active = true;
-    canvas = new Canvas();
+    canvas = std::make_unique<Canvas>();
     return true;
 }
 void SyncSlateClient::run(){

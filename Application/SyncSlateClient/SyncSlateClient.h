@@ -1,12 +1,13 @@
 #pragma once
 #include <SDL3/SDL.h>
 #include "Canvas.h"
+#include <memory>
 class SyncSlateClient{
 private:
     bool active;
     SDL_Window* window;
     SDL_Renderer* renderer;
-    Canvas* canvas;
+    std::unique_ptr<Canvas> canvas;
 protected:
 public:
     bool init();
