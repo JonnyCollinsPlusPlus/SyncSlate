@@ -1,11 +1,10 @@
 #pragma once
-#include "Canvas.cpp"
-#include "../State/Stroke.h"
-#include "../State/WIPStroke.h"
-#include <vector>
+#include "../shared/State/Whiteboard.h"
 class Canvas{
 private:
-    std::vector<Stroke> committedStrokes;
-    std::vector<WIPStroke> foreignWIPStrokes;
-    WIPStroke localWIPStroke;
+    bool window_active;
+    Whiteboard* board;
+protected:
+public:
+    void draw();
 };

@@ -1,8 +1,15 @@
 #pragma once
-#include "../Networking/UDPGameNetworking.h"
+#include <SDL3/SDL.h>
+#include "Canvas.h"
 class SyncSlateClient{
 private:
+    bool active;
+    SDL_Window* window;
+    SDL_Renderer* renderer;
+    Canvas* canvas;
 protected:
 public:
-    void start();
+    bool init();
+    void run();
+    void shutdown();
 };

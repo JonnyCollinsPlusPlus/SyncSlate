@@ -8,9 +8,17 @@ find_package(SDL3 CONFIG REQUIRED)
 find_package(SDL3_net CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
 
-add_executable(SyncSlateClient
-    SyncSlateClient/SyncSlateClient.cpp
+file(GLOB_RECURSE CLIENTSOURCES CONFIGURE_DEPENDS
+    Application/SyncSlateClient/*.cpp
 )
+file(GLOB_RECURSE SHAREDSOURCES CONFIGURE_DEPENDS
+    Application/Shared/*.cpp
+)
+file(GLOB_RECURSE SERVERSOURCES CONFIGURE_DEPENDS
+    Application/SyncSlateServer/*.cpp
+)
+
+add_executable(SyncSlateClient ${CLIENTSOURCES} ${SHAREDSOURCES})
 
 target_link_libraries(SyncSlateClient PRIVATE
     SDL3::SDL3
@@ -18,10 +26,7 @@ target_link_libraries(SyncSlateClient PRIVATE
     imgui::imgui
 )
 
-
-add_executable(SyncSlateServer
-    SyncSlateServer/SyncSlateServer.cpp
-)
+add_executable(SyncSlateServer ${SERVERSOURCES} ${SHAREDSOURCES})
 
 target_link_libraries(SyncSlateServer PRIVATE
     SDL3::SDL3

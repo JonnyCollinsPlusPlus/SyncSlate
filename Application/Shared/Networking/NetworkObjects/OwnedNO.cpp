@@ -1,6 +1,5 @@
 #include "OwnedNO.h"
 #include "../Wrapper/IWrapper.h"
-#include "../Demo/ColourValue.h"
 void OwnedNetworkObject::StreamSend(EndpointInfo* server, NET_DatagramSocket* socket, int clientTime, LibSettings* settings)
 {
 	engineObject->UpdateLibraryValues(networkedValues);

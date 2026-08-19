@@ -1,7 +1,6 @@
 #pragma once
-#include "Stroke.cpp"
 #include <vector>
-#include <SDL.h>
+#include <SDL3/SDL.h>
 class Stroke{
 private:
     std::vector<SDL_Point> points;

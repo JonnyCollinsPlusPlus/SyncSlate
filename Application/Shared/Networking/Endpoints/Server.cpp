@@ -125,7 +125,7 @@ Server::Server(std::string ip, int serverPort, IWrapper* libWrapper, LibSettings
     address = NET_ResolveHostname(ip.c_str());
     //TODO fix blocking until address is resolved
     NET_WaitUntilResolved(address, -1);
-    socket = SDLNet_CreateDatagramSocket(address, port);
+    socket = NET_CreateDatagramSocket(address, port, 0);
     if (!socket) {
         printf("Failed to create UDP socket: %s\n", SDL_GetError());
         sender = nullptr;
@@ -174,7 +174,7 @@ void Server::SendMessageTo(NetworkMessageTypes type, std::string message, Endpoi
 Server::~Server()
 {
 	delete sender;
-	SDLNet_DestroyDatagramSocket(socket);
+	NET_DestroyDatagramSocket(socket);
 	for (EndpointInfo* client : *connectedClients) {
 		delete client;
 	}

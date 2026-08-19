@@ -1,6 +1,5 @@
 #pragma once
 #include "../UDPGameNetworkingAPI.h"
-
 struct UDPGAMENETWORKING_API LibSettings {
 private:
 protected:

@@ -2,7 +2,6 @@
 #include <string>
 #include "INetworkedValue.h"
 #include "../NetworkUtilities.h"
-#include "../UDPGameNetworkingAPI.h"
 template<typename T>
 class UDPGAMENETWORKING_API NetworkedValue : public INetworkedValue {
 private:
