@@ -58,8 +58,6 @@ void SyncSlateClient::run(){
         SDL_RenderPresent(renderer);
 }
 void SyncSlateClient::shutdown(){
-    delete canvas;
-    canvas = nullptr;
     // --- Cleanup ---
     ImGui_ImplSDLRenderer3_Shutdown();
     ImGui_ImplSDL3_Shutdown();

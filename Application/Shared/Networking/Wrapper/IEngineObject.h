@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
 #include "LibSettings.h"
-#include "../UDPGameNetworkingAPI.h"
-class UDPGAMENETWORKING_API INetworkedValue;
+#include "../UDPNetworkingAPI.h"
+class UDPNETWORKING_API INetworkedValue;
 //This class should be inherited with a reference to an engine specific object
 // for registering
 class IEngineObject {

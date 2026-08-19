@@ -3,7 +3,7 @@
 #include "INetworkedValue.h"
 #include "../NetworkUtilities.h"
 template<typename T>
-class UDPGAMENETWORKING_API NetworkedValue : public INetworkedValue {
+class UDPNETWORKING_API NetworkedValue : public INetworkedValue {
 private:
 protected:
 	int ID;

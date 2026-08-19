@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
-#include "../UDPGameNetworkingAPI.h"
+#include "../UDPNetworkingAPI.h"
 //This class represents a callback that has been registered by the engine user, it will be invoked upon a specified message being received
-class UDPGAMENETWORKING_API Callback {
+class UDPNETWORKING_API Callback {
 private:
 	int ID;
 protected:
