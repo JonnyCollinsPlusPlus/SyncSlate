@@ -5,7 +5,7 @@
 #include <imgui_impl_sdlrenderer3.h>
 #include <cmath>
 
-bool SyncSlateClient::init() {
+bool SyncSlateClient::Init() {
     // --- Setup: SDL window + renderer ---
     if (!SDL_Init(SDL_INIT_VIDEO)) {
         SDL_Log("SDL_Init failed: %s", SDL_GetError());
@@ -23,6 +23,7 @@ bool SyncSlateClient::init() {
         SDL_Log("SDL_CreateRenderer failed: %s", SDL_GetError());
         return false;
     }
+    NET_Init();
 
     // --- Setup: ImGui context + backends ---
     IMGUI_CHECKVERSION();
@@ -36,9 +37,11 @@ bool SyncSlateClient::init() {
     ImGui_ImplSDLRenderer3_Init(renderer);
     active = true;
     canvas = std::make_unique<Canvas>();
+    networkManager = std::make_unique<ClientNetworkManager>();
+    networkManager->Init();
     return true;
 }
-void SyncSlateClient::run(){
+void SyncSlateClient::Run(){
 
         // Start the frame
         ImGui_ImplSDLRenderer3_NewFrame();
@@ -57,7 +60,7 @@ void SyncSlateClient::run(){
         ImGui_ImplSDLRenderer3_RenderDrawData(ImGui::GetDrawData(), renderer);
         SDL_RenderPresent(renderer);
 }
-void SyncSlateClient::shutdown(){
+void SyncSlateClient::Shutdown(){
     // --- Cleanup ---
     ImGui_ImplSDLRenderer3_Shutdown();
     ImGui_ImplSDL3_Shutdown();
@@ -67,10 +70,13 @@ void SyncSlateClient::shutdown(){
     SDL_DestroyWindow(window);
     SDL_Quit();
 }
+void SyncSlateClient::Update(float deltaTime){
+    networkManager->Update(deltaTime);
+}
 
 int main(int argc, char* argv[]) {
     SyncSlateClient* client = new SyncSlateClient();
-    client->init();
+    client->Init();
     // --- Main loop ---
     bool running = true;
     while (running) {
@@ -81,10 +87,11 @@ int main(int argc, char* argv[]) {
                 running = false;
             }
         }
-        client->run();
+        client->Run();
+        //client->Update(1);
     }
 
-    client->shutdown();
+    client->Shutdown();
 
     return 0;
 }

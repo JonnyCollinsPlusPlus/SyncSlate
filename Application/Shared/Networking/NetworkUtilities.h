@@ -72,8 +72,8 @@ public:
 
 
 	//converts a decimal integer into a binary coded decimal string
-	// @param outNibbles - the number of nibbles (4 bits) to return, any value that can not be shown in this length will be ignored
 	// @param value - the integer to convert into BCD
+	// @param outNibbles - the number of nibbles (4 bits) to return, any value that can not be shown in this length will be ignored
 	static std::string AsBinaryString(int value, int digits);
 	//Converts a binary string into an integer
 	// @param binaryString - the string to convert from (note that BCD is assumed and that the string will be read from the start
