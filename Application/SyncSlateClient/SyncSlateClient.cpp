@@ -52,7 +52,22 @@ void SyncSlateClient::Run(){
         if (active) {
             canvas->draw();
         }
+        ImGui::Begin("Debug", &debug, ImGuiWindowFlags_MenuBar);
 
+        if (ImGui::BeginMenuBar()) {
+            if (ImGui::BeginMenu("File")) {
+                if (ImGui::MenuItem("Open..", "Ctrl+O")) { /* Do stuff */ }
+                if (ImGui::MenuItem("Save", "Ctrl+S")) { /* Do stuff */ }
+                if (ImGui::MenuItem("Close", "Ctrl+W")) { debug = false; }
+                ImGui::EndMenu();
+            }
+            ImGui::EndMenuBar();
+        }
+
+        ImGui::Text("DEBUG MENU");
+        ImGui::Text(networkManager->GetDebugInfo().c_str());
+
+        ImGui::End();
         // --- Render ---
         ImGui::Render();
         SDL_SetRenderDrawColor(renderer, 30, 30, 30, 255);

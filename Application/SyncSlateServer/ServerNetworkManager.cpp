@@ -12,3 +12,6 @@ void ServerNetworkManager::Update(float deltaTime){
 void ServerNetworkManager::Shutdown(){
 
 }
+std::string ServerNetworkManager::GetDebugInfo(){
+	return wrapper->GetDebugInfo();
+}

@@ -6,6 +6,7 @@
 class SyncSlateClient{
 private:
     bool active;
+    bool debug;
     SDL_Window* window;
     SDL_Renderer* renderer;
     std::unique_ptr<Canvas> canvas;

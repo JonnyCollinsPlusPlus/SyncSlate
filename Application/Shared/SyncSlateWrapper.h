@@ -31,4 +31,5 @@ public:
 	void DrawOtherPlayers(SDL_Renderer* renderer);
 	void CallbackTest();
 	int GetClientTime();
+	std::string GetDebugInfo();
 };

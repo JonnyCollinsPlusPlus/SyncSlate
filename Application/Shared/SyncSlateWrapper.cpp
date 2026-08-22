@@ -183,3 +183,17 @@ int SyncSlateWrapper::GetClientTime()
 {
 	return client->GetTime();;
 }
+std::string SyncSlateWrapper::GetDebugInfo(){
+	std::string out = "";
+	out.append("Is Server: ");
+	out.append(std::to_string(server != nullptr));
+	out.append("\nClient time: ");
+	out.append(std::to_string(client->GetTime()));
+	out.append("\nClient connected: ");
+	out.append(std::to_string(client->IsConnected()));
+	if (server!= nullptr){
+		out.append("\nServer connected: ");
+		out.append(std::to_string(server->GetConnectedClientCount()));
+	}
+	return out;
+}

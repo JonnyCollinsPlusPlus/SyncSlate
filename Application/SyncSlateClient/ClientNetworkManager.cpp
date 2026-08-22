@@ -10,3 +10,7 @@ void ClientNetworkManager::Update(float deltaTime){
 }
 void ClientNetworkManager::Shutdown(){
 }
+
+std::string ClientNetworkManager::GetDebugInfo(){
+	return wrapper->GetDebugInfo();
+}

@@ -31,4 +31,5 @@ add_executable(SyncSlateServer ${SERVERSOURCES} ${SHAREDSOURCES})
 target_link_libraries(SyncSlateServer PRIVATE
     SDL3::SDL3
     $<IF:$<TARGET_EXISTS:SDL3_net::SDL3_net>,SDL3_net::SDL3_net,SDL3_net::SDL3_net-static>
+    imgui::imgui
 )
