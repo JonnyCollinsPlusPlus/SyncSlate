@@ -44,6 +44,7 @@ void Server::TryConnectClient(NetworkMessage* msg)
     connectingAClient = true;
     connectorInfo = client;
     NetworkUtilities::SendMessageTo(Connect, "", socket, connectorInfo->address, connectorInfo->port, sender);
+    std::cout << "sending confirmation to " << connectorInfo->address << " over port " << connectorInfo->port << " :)" << std::endl;
 }
 
 bool Server::IsAlreadyConnected(EndpointInfo* client)

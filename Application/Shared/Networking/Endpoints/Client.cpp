@@ -184,7 +184,7 @@ void Client::Update(float deltaTime)
 		if (fallbackConnectionRequestDelay < 0) {
 			SendConnectRequest();
 			std::cout << "sending fallback connect request" << std::endl;
-			fallbackConnectionRequestDelay = 5000;
+			fallbackConnectionRequestDelay = 100;
 		}
 		fallbackConnectionRequestDelay--;
 	}

@@ -103,7 +103,7 @@ int main(int argc, char* argv[]) {
             }
         }
         client->Run();
-        //client->Update(1);
+        client->Update(1);
     }
 
     client->Shutdown();
