@@ -1,6 +1,11 @@
 #pragma once
 #include "Stroke.h"
-class WIPStroke : public Stroke
+#include <vector>
+#include "StrokePoint.h"
+class WIPStroke
 {
-
+private:
+	std::vector<StrokePoint> points;
+protected:
+public:
 };
