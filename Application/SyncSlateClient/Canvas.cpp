@@ -4,7 +4,17 @@ Canvas::Canvas() : board(std::make_unique<Whiteboard>()) {
     
 }
 void Canvas::draw(){
-    ImGui::Begin("Canvas", &window_active, ImGuiWindowFlags_MenuBar);
+    ImGuiIO& io = ImGui::GetIO();
+    ImGui::SetNextWindowPos(ImVec2(0, 0));
+    ImGui::SetNextWindowSize(io.DisplaySize);
+
+    ImGuiWindowFlags flags = ImGuiWindowFlags_NoTitleBar
+        | ImGuiWindowFlags_NoResize
+        | ImGuiWindowFlags_NoMove
+        | ImGuiWindowFlags_NoCollapse
+        | ImGuiWindowFlags_NoBringToFrontOnFocus
+        | ImGuiWindowFlags_NoNavFocus;
+    ImGui::Begin("Canvas", &window_active, flags);
 
     if (ImGui::BeginMenuBar()) {
         if (ImGui::BeginMenu("File")) {
@@ -16,11 +26,8 @@ void Canvas::draw(){
         ImGui::EndMenuBar();
     }
 
-    static float samples[100];
-    for (int n = 0; n < 100; n++)
-        samples[n] = sinf(n * 0.2f + (float)ImGui::GetTime() * 1.5f);
-    ImGui::PlotLines("Samples", samples, 100);
-
+    ImDrawList* draw_list = ImGui::GetWindowDrawList();
+    draw_list->AddLine(ImVec2(10, 10), ImVec2(200, 200), IM_COL32(0, 255, 255, 150), 30);
     ImGui::TextColored(ImVec4(1, 1, 0, 1), "Important Stuff");
     ImGui::BeginChild("Scrolling");
     for (int n = 0; n < 50; n++)

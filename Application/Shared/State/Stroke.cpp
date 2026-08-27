@@ -6,7 +6,7 @@ StrokeStream::StrokeStream(int initID) : NetworkedValue(initID){
 }
 
 bool StrokeStream::StreamReceived(std::string streamData, int time){
-
+	return true;
 }
 
 int StrokeStream::GetPacketPayloadLength(){
@@ -14,7 +14,7 @@ int StrokeStream::GetPacketPayloadLength(){
 }
 
 Stroke* StrokeStream::Deserialize(std::string data){
-
+	return new Stroke();
 }
 
 std::string StrokeStream::Serialize(Stroke* stroke){
@@ -29,6 +29,7 @@ std::string StrokeStream::Serialize(Stroke* stroke){
 		streamData.append(NetworkUtilities::AsBinaryString(p.x, 8));
 		streamData.append(NetworkUtilities::AsBinaryString(p.y, 8));
 	}
+	return streamData;
 }
 
 std::string StrokeStream::Debug(){
@@ -36,7 +37,7 @@ std::string StrokeStream::Debug(){
 }
 
 Stroke* StrokeStream::GetCurrentValue(int currentTime, LibSettings* settings){
-
+	return new Stroke();
 
 }
 std::string StrokeStream::GetMetadata(){
