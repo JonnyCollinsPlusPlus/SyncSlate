@@ -1,1 +1,0 @@
-#include "WIPStroke.h"

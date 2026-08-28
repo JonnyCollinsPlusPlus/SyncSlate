@@ -2,10 +2,12 @@
 #include "Stroke.h"
 #include <vector>
 #include "StrokePoint.h"
-class WIPStroke
+#include "StrokeStream.h"
+class ForeignWIPStroke : public Stroke
 {
 private:
-	std::vector<StrokePoint> points; //TODO custom container to insert in order quickly
+	StrokeStream stream;
 protected:
 public:
 };
+
