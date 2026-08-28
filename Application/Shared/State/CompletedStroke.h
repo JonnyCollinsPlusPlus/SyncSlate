@@ -6,4 +6,6 @@ private:
 
 protected:
 public:
+    CompletedStroke(int x1, int y1, int x2, int y2);
+    virtual void draw(ImDrawList* draw_list) override;
 };

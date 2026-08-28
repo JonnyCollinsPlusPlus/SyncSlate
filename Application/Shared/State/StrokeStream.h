@@ -3,7 +3,11 @@
 #include "StrokePoint.h"
 
 class StrokeStream : public NetworkedValue<StrokePoint*>{
+private:
 	std::vector<StrokePoint*> points;
+
+protected:
+public:
 	StrokeStream(int valueID);
 	//Checks if an incoming stream data segment is relevant to this networked value
 	// and, if so, processes it and returns true, otherwise returns false
@@ -19,4 +23,6 @@ class StrokeStream : public NetworkedValue<StrokePoint*>{
 	virtual std::string Debug() override;
 	virtual StrokePoint* GetCurrentValue(int currentTime, LibSettings* settings) override;
     virtual std::string GetMetadata() override;
+
+	std::vector<StrokePoint*> getAllPoints();
 };

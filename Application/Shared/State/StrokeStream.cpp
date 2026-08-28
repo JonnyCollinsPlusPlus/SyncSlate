@@ -47,3 +47,7 @@ StrokePoint* StrokeStream::GetCurrentValue(int currentTime, LibSettings* setting
 std::string StrokeStream::GetMetadata(){
 	return "00000001";
 }
+
+std::vector<StrokePoint*> StrokeStream::getAllPoints(){
+	return points;
+}

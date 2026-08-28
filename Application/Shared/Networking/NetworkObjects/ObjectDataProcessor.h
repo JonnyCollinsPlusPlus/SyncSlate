@@ -3,7 +3,6 @@
 #include "../CustomStreaming/NetworkedValue.h"
 #include "../NetworkMessage.h"
 #include "OwnedNO.h"
-#include "../CustomStreaming/PositionLerp2D.h"
 class IWrapper;
 static const int timestampByteCount = 4;
 class ObjectDataProcessor {

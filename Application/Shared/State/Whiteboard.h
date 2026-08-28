@@ -2,15 +2,17 @@
 #include "Stroke.h"
 #include "ForeignWIPStroke.h"
 #include "LocalWIPStroke.h"
+#include "CompletedStroke.h"
 #include <vector>
 #include <imgui.h>
 
 class Whiteboard{
 private:
-    std::vector<Stroke> committedStrokes;
+    std::vector<CompletedStroke> committedStrokes;
     std::vector<ForeignWIPStroke> foreignWIPStrokes;
-    LocalWIPStroke localWIPStroke;
+    LocalWIPStroke* localWIPStroke;
 protected:
 public:
-    std::vector<Stroke*> getAllStrokes();
+    Whiteboard();   
+    std::vector<Stroke*>* getAllStrokes();
 };

@@ -27,7 +27,12 @@ void Canvas::draw(){
     }
 
     ImDrawList* draw_list = ImGui::GetWindowDrawList();
-    board->draw(draw_list);
+    std::vector<Stroke*> strokes = *(board->getAllStrokes());
+    std::cout << "STROKECOUNT " << strokes.size() << std::endl;
+    for (Stroke* s : strokes){
+        std::cout<<"DRAWING" << std::endl;
+        s->draw(draw_list);
+    }
     draw_list->AddLine(ImVec2(10, 10), ImVec2(200, 200), IM_COL32(0, 255, 255, 150), 30);
     ImGui::TextColored(ImVec4(1, 1, 0, 1), "Important Stuff");
     ImGui::BeginChild("Scrolling");

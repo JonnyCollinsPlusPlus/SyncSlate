@@ -9,5 +9,7 @@ private:
 	StrokeStream stream;
 protected:
 public:
+    virtual void draw(ImDrawList* draw_list) override;
+
 };
 
