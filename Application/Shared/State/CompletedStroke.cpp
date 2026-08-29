@@ -7,9 +7,7 @@ CompletedStroke::CompletedStroke(int x1, int y1, int x2, int y2){
 	points.push_back(s2);
 }
 void CompletedStroke::draw(ImDrawList* draw_list){
-	std::cout <<"POINTCOUNT " << points.size() << std::endl;
 	for (int i = 0; i < (points.size() - 1); i++){
-		std::cout << "DRAWING FROM POINT NUM " << i << std::endl;
 		int x1 = points[i]->x;
 		int y1 = points[i]->y;
 		int x2 = points[i+1]->x;
