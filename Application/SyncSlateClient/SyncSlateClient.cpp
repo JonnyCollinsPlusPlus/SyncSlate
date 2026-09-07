@@ -97,11 +97,9 @@ int main(int argc, char* argv[]) {
     while (running) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
-            ImGui_ImplSDL3_ProcessEvent(&event);
-            if (event.type == SDL_EVENT_QUIT) {
-                running = false;
-            }
-        }
+        ImGui_ImplSDL3_ProcessEvent(&event);
+        client->GetInputManager().ProcessEvent(event);
+        if (event.type == SDL_EVENT_QUIT) running = false;
         client->Run();
         client->Update(1);
     }
