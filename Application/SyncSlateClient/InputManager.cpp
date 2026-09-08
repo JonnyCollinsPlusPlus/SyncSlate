@@ -11,11 +11,21 @@ void InputManager::ProcessEvent(const SDL_Event &e)
 	if (!io.WantCaptureMouse) {
 		// safe for canvas to handle this input
 		if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN){
-			MouseDown(e.button.button);
+            int b = e.button.button - 1;
+			if (b >= 0 && b < 3)
+            {
+                mouseDown[b] = true;
+                mousePressedThisFrame[b] = true;
+            }
 		}
 
 		if (e.type == SDL_EVENT_MOUSE_BUTTON_UP){
-			MouseReleased(e.button.button);
+            int b = e.button.button - 1;
+            if (b >= 0 && b < 3)
+            {
+                mouseDown[b] = false;
+                mouseReleasedThisFrame[b] = true;
+            }		
 		}
 	}
 	if (!io.WantCaptureKeyboard) {
@@ -25,27 +35,28 @@ void InputManager::ProcessEvent(const SDL_Event &e)
 
 bool InputManager::MouseDown(int button) const
 {
-	return false;
+	return mouseDown[button];
 }
 
 bool InputManager::MousePressed(int button) const
 {
-	return false;
+	return mousePressedThisFrame[button];
 }
 
 bool InputManager::MouseReleased(int button) const
 {
-	return false;
+	return mouseReleasedThisFrame[button];
 }
 
 SDL_Point InputManager::MousePos() const
 {
-	return SDL_Point();
+	return mousePos;
 }
 
 SDL_Point InputManager::MouseDelta() const
 {
-	return SDL_Point();
+	return SDL_Point(mousePos.x - lastMousePos.x,
+		 mousePos.y - lastMousePos.y);
 }
 
 bool InputManager::KeyPressed(SDL_Scancode key) const
