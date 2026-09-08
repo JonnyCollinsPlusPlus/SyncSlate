@@ -40,3 +40,9 @@ void Canvas::draw(){
 
     ImGui::End();
 }
+
+void Canvas::MakeTestStroke(){
+    CompletedStroke *s = new CompletedStroke(10, 10, 50, 50);
+    CompletedStroke s2 = *s;
+	board->GiveStroke(s2);
+}

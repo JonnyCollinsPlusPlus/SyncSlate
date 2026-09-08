@@ -7,6 +7,7 @@ private:
     // keyboard state similarly
 protected:
 public:
+    InputManager();
     void BeginFrame(); // reset "just pressed/released" flags
     void ProcessEvent(const SDL_Event& e);
 

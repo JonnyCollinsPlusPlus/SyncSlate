@@ -19,5 +19,4 @@ public:
     void Run();
     void Shutdown();
     void Update(float deltaTime);
-    InputManager GetInputManager() {return *inputManager;}
-};
+    InputManager& GetInputManager() { return *inputManager; }};

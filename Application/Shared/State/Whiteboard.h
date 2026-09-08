@@ -15,4 +15,5 @@ protected:
 public:
     Whiteboard();   
     std::vector<Stroke*>* getAllStrokes();
+    void GiveStroke(CompletedStroke s);
 };

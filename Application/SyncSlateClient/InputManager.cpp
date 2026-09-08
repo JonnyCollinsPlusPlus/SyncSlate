@@ -1,32 +1,40 @@
 #include "InputManager.h"
 #include <imgui.h>
+#include <iostream>
+InputManager::InputManager(){
+}
 void InputManager::BeginFrame()
 {
+    for (int i = 0; i < 3; i++)
+    {
+        mousePressedThisFrame[i] = false;
+        mouseReleasedThisFrame[i] = false;
+    }
 }
 
 void InputManager::ProcessEvent(const SDL_Event &e)
 {
 	ImGuiIO& io = ImGui::GetIO();
-	if (e.type == SDL_EVENT_MOUSE_REMOVED)
-	if (!io.WantCaptureMouse) {
-		// safe for canvas to handle this input
-		if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN){
-            int b = e.button.button - 1;
-			if (b >= 0 && b < 3)
-            {
-                mouseDown[b] = true;
-                mousePressedThisFrame[b] = true;
-            }
-		}
+	if (e.type == SDL_EVENT_MOUSE_REMOVED){
 
-		if (e.type == SDL_EVENT_MOUSE_BUTTON_UP){
-            int b = e.button.button - 1;
-            if (b >= 0 && b < 3)
-            {
-                mouseDown[b] = false;
-                mouseReleasedThisFrame[b] = true;
-            }		
+	}
+	// safe for canvas to handle this input
+	if (e.type == SDL_EVENT_MOUSE_BUTTON_DOWN){
+		int b = e.button.button - 1;
+		if (b >= 0 && b < 3)
+		{
+			mouseDown[b] = true;
+			mousePressedThisFrame[b] = true;
 		}
+	}
+
+	if (e.type == SDL_EVENT_MOUSE_BUTTON_UP){
+		int b = e.button.button - 1;
+		if (b >= 0 && b < 3)
+		{
+			mouseDown[b] = false;
+			mouseReleasedThisFrame[b] = true;
+		}		
 	}
 	if (!io.WantCaptureKeyboard) {
 		// safe for canvas/app shortcuts to handle this input
@@ -55,8 +63,8 @@ SDL_Point InputManager::MousePos() const
 
 SDL_Point InputManager::MouseDelta() const
 {
-	return SDL_Point(mousePos.x - lastMousePos.x,
-		 mousePos.y - lastMousePos.y);
+	return SDL_Point{mousePos.x - lastMousePos.x,
+		 mousePos.y - lastMousePos.y};
 }
 
 bool InputManager::KeyPressed(SDL_Scancode key) const

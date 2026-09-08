@@ -9,5 +9,6 @@ protected:
 public:
     Canvas();
     void draw();
+    void MakeTestStroke();
 
 };

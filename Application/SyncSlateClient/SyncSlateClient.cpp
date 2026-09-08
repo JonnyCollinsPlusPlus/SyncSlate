@@ -39,6 +39,7 @@ bool SyncSlateClient::Init() {
     canvas = std::make_unique<Canvas>();
     networkManager = std::make_unique<ClientNetworkManager>();
     networkManager->Init();
+    inputManager = std::make_unique<InputManager>();
     return true;
 }
 void SyncSlateClient::Run(){
@@ -87,6 +88,9 @@ void SyncSlateClient::Shutdown(){
 }
 void SyncSlateClient::Update(float deltaTime){
     networkManager->Update(deltaTime);
+    if (inputManager->MouseDown(0)){
+        canvas->MakeTestStroke();
+    }
 }
 
 int main(int argc, char* argv[]) {
@@ -97,13 +101,14 @@ int main(int argc, char* argv[]) {
     while (running) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
-        ImGui_ImplSDL3_ProcessEvent(&event);
-        client->GetInputManager().ProcessEvent(event);
-        if (event.type == SDL_EVENT_QUIT) running = false;
-        client->Run();
-        client->Update(1);
-    }
+            ImGui_ImplSDL3_ProcessEvent(&event);
+            client->GetInputManager().ProcessEvent(event);
+            if (event.type == SDL_EVENT_QUIT) running = false;
+            client->Run();
+            client->Update(1);
+        }
 
+    }
     client->Shutdown();
 
     return 0;
