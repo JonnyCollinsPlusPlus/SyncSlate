@@ -4,7 +4,7 @@
 #include "ClientNetworkManager.h"
 #include "InputManager.h"
 #include <memory>
-class SyncSlateClient{
+class SyncSlateClient {
 private:
     bool active;
     bool debug;
@@ -19,4 +19,5 @@ public:
     void Run();
     void Shutdown();
     void Update(float deltaTime);
-    InputManager& GetInputManager() { return *inputManager; }};
+    InputManager& GetInputManager() { return *inputManager; }
+};

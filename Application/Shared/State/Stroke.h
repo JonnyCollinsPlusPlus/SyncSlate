@@ -4,7 +4,9 @@
 #include "../Networking/CustomStreaming/NetworkedValue.h"
 #include "StrokePoint.h"
 #include "imgui.h"
-class Stroke{
+#include "../Networking/Wrapper/IEngineObject.h"
+
+class Stroke : public IEngineObject{
 private:
 protected:
 	int strokeId;

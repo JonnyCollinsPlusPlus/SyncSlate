@@ -15,3 +15,11 @@ void CompletedStroke::draw(ImDrawList* draw_list){
 		draw_list->AddLine(ImVec2(x1, y1), ImVec2(x2, y2), ImColor(255, 0, 0, 255));
 	}
 }
+
+void CompletedStroke::UpdateLibraryValues(std::vector<INetworkedValue *> *values)
+{
+}
+
+void CompletedStroke::UpdateEngineValues(std::vector<INetworkedValue *> *values, LibSettings *settings)
+{
+}

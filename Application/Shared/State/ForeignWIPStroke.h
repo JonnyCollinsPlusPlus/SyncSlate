@@ -1,15 +1,16 @@
 #pragma once
-#include "Stroke.h"
+#include <imgui.h>
 #include <vector>
 #include "StrokePoint.h"
 #include "StrokeStream.h"
+#include "Stroke.h"
 class ForeignWIPStroke : public Stroke
 {
 private:
 	StrokeStream stream;
 protected:
 public:
-    virtual void draw(ImDrawList* draw_list) override;
+    void draw(ImDrawList* draw_list);
 
 };
 

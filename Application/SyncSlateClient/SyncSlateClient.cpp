@@ -104,9 +104,10 @@ int main(int argc, char* argv[]) {
             ImGui_ImplSDL3_ProcessEvent(&event);
             client->GetInputManager().ProcessEvent(event);
             if (event.type == SDL_EVENT_QUIT) running = false;
-            client->Run();
-            client->Update(1);
         }
+        client->Run();
+        client->Update(1);
+
 
     }
     client->Shutdown();

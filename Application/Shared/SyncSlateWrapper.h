@@ -1,5 +1,6 @@
 #pragma once
 #include "Networking/Wrapper/IWrapper.h"
+#include "NetworkManager.h"
 #include <SDL3/SDL.h>
 #include <vector>
 class Callback;
@@ -8,9 +9,10 @@ class SyncSlateWrapper : public IWrapper {
 private:
 	int plannedPort;
 	std::vector<Callback*>* registeredCallbacks;
+	NetworkManager* manager;
 protected:
 public:
-	SyncSlateWrapper(int port, int lerpDelay, bool lerpEnabled);
+	SyncSlateWrapper(int port, int lerpDelay, bool lerpEnabled, NetworkManager* pManager);
 	virtual void Update(float deltaTime) override;
 	virtual void Initialize() override;
 	virtual void RegisterObject(IEngineObject* obj) override;
@@ -28,7 +30,6 @@ public:
 
 
 
-	void DrawOtherPlayers(SDL_Renderer* renderer);
 	void CallbackTest();
 	int GetClientTime();
 	std::string GetDebugInfo();
