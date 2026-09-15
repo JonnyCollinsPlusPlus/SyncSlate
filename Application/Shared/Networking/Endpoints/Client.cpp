@@ -78,6 +78,7 @@ void Client::ProcessObjectMessage(NetworkMessage* msg)
 
 void Client::InitializeNewObject(NetworkMessage* msg)
 {
+	std::cout << "initializing new object" << std::endl;
 	int objectID = NetworkUtilities::IntFromBinaryString(msg->GetExtraData().substr(0, objectIDBits), 2);
 	if (AmIThisObjectsOwner(objectID)) {
 		return;

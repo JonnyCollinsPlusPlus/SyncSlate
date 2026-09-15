@@ -16,6 +16,6 @@ std::vector<Stroke*>* Whiteboard::getAllStrokes(){
 	}
 	return outStrokes;
 }
-void Whiteboard::GiveStroke(CompletedStroke s){
-	committedStrokes.push_back(s);
+void Whiteboard::GiveStroke(ForeignWIPStroke* s){
+	foreignWIPStrokes.push_back(*s);
 }

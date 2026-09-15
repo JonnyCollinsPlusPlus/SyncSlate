@@ -88,9 +88,13 @@ void SyncSlateClient::Shutdown(){
 }
 void SyncSlateClient::Update(float deltaTime){
     networkManager->Update(deltaTime);
-    if (inputManager->MouseDown(0)){
-        canvas->MakeTestStroke();
+    if (inputManager->MousePressed(0)){
+        Stroke* s = canvas->MakeTestStroke();
+        networkManager->NewStroke(s);
     }
+}
+void SyncSlateClient::BeginFrame(){
+    inputManager->BeginFrame();
 }
 
 int main(int argc, char* argv[]) {
@@ -99,6 +103,7 @@ int main(int argc, char* argv[]) {
     // --- Main loop ---
     bool running = true;
     while (running) {
+        client->BeginFrame();
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
             ImGui_ImplSDL3_ProcessEvent(&event);

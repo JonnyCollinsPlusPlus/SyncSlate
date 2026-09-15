@@ -20,4 +20,5 @@ public:
     void Shutdown();
     void Update(float deltaTime);
     InputManager& GetInputManager() { return *inputManager; }
+    void BeginFrame();
 };

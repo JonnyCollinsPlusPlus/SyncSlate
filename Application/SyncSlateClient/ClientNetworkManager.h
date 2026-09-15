@@ -13,6 +13,7 @@ public:
 	void Init();
 	void Update(float deltaTime);
 	void Shutdown();
+	void NewStroke(Stroke* s);
 	std::string GetDebugInfo();
 	virtual Stroke* GiveStroke() override;
 };

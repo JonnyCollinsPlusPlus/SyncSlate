@@ -11,6 +11,12 @@ void ClientNetworkManager::Update(float deltaTime){
 void ClientNetworkManager::Shutdown(){
 }
 
+void ClientNetworkManager::NewStroke(Stroke *s)
+{
+	std::cout << "new networked object being initialized!" << std::endl;
+	wrapper->RegisterObject(s);
+}
+
 std::string ClientNetworkManager::GetDebugInfo(){
 	return wrapper->GetDebugInfo();
 }

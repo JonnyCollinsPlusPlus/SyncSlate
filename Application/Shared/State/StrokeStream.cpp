@@ -2,6 +2,10 @@
 #include "../Networking/NetworkUtilities.h"
 
 StrokeStream::StrokeStream(int initID) : NetworkedValue(initID){
+	points = {new StrokePoint(0, 0, 0, 0),
+			  new StrokePoint(0, 1, 10, 10),
+			  new StrokePoint(0, 2, 20, 10),
+			  new StrokePoint(0, 3, 20, 20)};
 	
 }
 

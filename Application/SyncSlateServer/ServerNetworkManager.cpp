@@ -5,6 +5,8 @@ void ServerNetworkManager::Init(){
 	wrapper = std::make_unique<SyncSlateWrapper>(55522, 100, true, this);
 	wrapper->Initialize();
 	wrapper->StartServer();
+	wrapper->StartClient();
+
 }
 void ServerNetworkManager::Update(float deltaTime){
 	wrapper->Update(deltaTime);

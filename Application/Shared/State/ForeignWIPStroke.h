@@ -10,7 +10,9 @@ private:
 	StrokeStream stream;
 protected:
 public:
-    void draw(ImDrawList* draw_list);
-
+	ForeignWIPStroke();
+    virtual void draw(ImDrawList* draw_list) override;
+	virtual void UpdateLibraryValues(std::vector<INetworkedValue*>* values) override;
+	virtual void UpdateEngineValues(std::vector<INetworkedValue*>* values, LibSettings* settings) override;
 };
 

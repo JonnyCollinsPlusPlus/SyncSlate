@@ -73,10 +73,12 @@ void SyncSlateWrapper::InvokeRegisteredCallback(int callbackID, std::string opti
 //TODO clean up object initialization pipeline (right now - int object type -> NewNetworkedObject -> Find object type again -> initialize values)
 IEngineObject* SyncSlateWrapper::NewNetworkedObject(int objectType, bool belongsToClient)
 {
+	std::cout << "Initializing object!" << std::endl;
 	switch (objectType){
 		case 0:
 			return manager->GiveStroke();
 	}
+	return nullptr;
 }
 
 INetworkedValue* SyncSlateWrapper::NewNetworkedValue(int valueID, int valueType)

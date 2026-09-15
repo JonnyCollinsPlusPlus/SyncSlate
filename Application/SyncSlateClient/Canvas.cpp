@@ -41,11 +41,8 @@ void Canvas::draw(){
     ImGui::End();
 }
 
-void Canvas::MakeTestStroke(){
-    CompletedStroke *s = new CompletedStroke(10, 10, 50, 50);
-    CompletedStroke s2 = *s;
-	board->GiveStroke(s2);
-    //must register object with engine
-    //TODO do this by returning the object back through call layers to a layer
-    // where the wrapper is referenced and calling the register there
+Stroke* Canvas::MakeTestStroke(){
+    ForeignWIPStroke *s = new ForeignWIPStroke();
+	board->GiveStroke(s);
+    return s;
 }

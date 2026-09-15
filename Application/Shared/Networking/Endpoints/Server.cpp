@@ -86,6 +86,7 @@ void Server::ProcessMessage(NetworkMessage* msg)
 
 void Server::ProcessIncomingIDRequest(NetworkMessage* msg)
 {
+    std::cout << "ID REQUEST RECEIVED" << std::endl;
     std::string idValue = NetworkUtilities::AsBinaryString(GetNextFreeID(), objectIDDigits);
     NetworkUtilities::SendMessageTo(IDRequest, idValue, socket, msg->GetAddress(), msg->GetPort(), sender);
 }
